@@ -1,6 +1,6 @@
 Activity 3
 ================
-Team Name
+Nick
 
 Today you will be creating and manipulating vectors, lists, and data
 frames to uncover a top secret message.
@@ -30,15 +30,10 @@ lower case letters, and 3) some punctuation marks.
 ``` r
 lower_case <- c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z")
 
-upper_case <- c("A", "B", "C", "D", "E", "F", "G", "H" "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
+upper_case <- c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
 
-punctuation <- c(".", ",", "!", "?", "'", ""","(", ")", " ", "-", ";", ":")
+punctuation <- c(".", ",", "!", "?", "'", "",", (", ")", " ", "-", ";", ":")
 ```
-
-    ## Error: <text>:3:56: unexpected string constant
-    ## 2: 
-    ## 3: upper_case <- c("A", "B", "C", "D", "E", "F", "G", "H" "I"
-    ##                                                           ^
 
 Comment on what you noticed about the errors and how you used this
 information to correct the issues.
@@ -49,10 +44,8 @@ in the list which does help figure out where the error is**:
 Make one long vector containing all the symbols.
 
 ``` r
-my_symbols <- cbind(lower_case, upper_case, punctuation)
+my_symbols <- c(lower_case, upper_case, punctuation)
 ```
-
-    ## Error in cbind(lower_case, upper_case, punctuation): object 'lower_case' not found
 
 Comment on what you noticed about the errors and how you used this
 information to correct the issues.
@@ -64,50 +57,37 @@ Turn the `my_symbols` vector into a data frame, with the variable name
 “Symbol”.
 
 ``` r
-my_symbols <- dataframe(my_symbols)
+my_symbols <- data.frame(my_symbols)
+names(my_symbols) = 'Symbol'
 ```
-
-    ## Error in dataframe(my_symbols): could not find function "dataframe"
-
-``` r
-names(my_symbols) = Symbol
-```
-
-    ## Error in eval(expr, envir, enclos): object 'Symbol' not found
 
 Comment on what you noticed about the errors and how you used this
 information to correct the issues.
 
-**Response**:
+**I needed to add quotations around “Symbol”**:
 
 Find the total number of symbols we have in our data frame.
 
 ``` r
-len <- length(my_symbols)
+len <- length('Symbol')
 ```
-
-    ## Error in eval(expr, envir, enclos): object 'my_symbols' not found
 
 Comment on what you noticed about the errors and how you used this
 information to correct the issues.
 
-**Response**:
+**I needed to check the environment tab and also add quotations**:
 
 5.  Create a new variable in your dataframe that assigns a number to
     each symbol.
 
 ``` r
-my_symbols%Num <- 1:len
+my_symbolsNum <- 1:len
 ```
-
-    ## Error: <text>:1:11: unexpected input
-    ## 1: my_symbols%Num <- 1:len
-    ##               ^
 
 Comment on what you noticed about the errors and how you used this
 information to correct the issues.
 
-**Response**:
+**The % symbol was not the same color as the rest and thus stuck out**:
 
 <img src="README-img/noun_pause.png" alt="pause" width = "20"/>
 <b>Planned Pause Point</b>: If you feel that you have a good
@@ -126,16 +106,14 @@ a vector. There are no errors here.
 top_secret <- readr::read_csv("data/secret_code.csv", col_names = FALSE)
 ```
 
-    ## 
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## cols(
-    ##   X1 = col_double()
-    ## )
+    ## Error: 'data/secret_code.csv' does not exist in current working directory ('/home/scholln/STA 518/Activities/activity02-ggplot2-intro').
 
 ``` r
 # Pick off only the column X1
 top_secret <- top_secret$X1
 ```
+
+    ## Error in eval(expr, envir, enclos): object 'top_secret' not found
 
 By altering this top secret set of numbers, you will be able to create a
 message. Write your own code to complete the steps below.
@@ -183,7 +161,7 @@ the final message, by running the following code:
 stringr::str_c(my_symbols$Symbol[top_secret], collapse = "")
 ```
 
-    ## Error in stri_c(..., sep = sep, collapse = collapse, ignore_null = TRUE): object 'my_symbols' not found
+    ## Error in stri_c(..., sep = sep, collapse = collapse, ignore_null = TRUE): object 'top_secret' not found
 
 Google the first line of this message, if you do not recognize it, to
 see what it is.
