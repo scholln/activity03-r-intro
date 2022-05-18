@@ -32,7 +32,7 @@ lower_case <- c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
 
 upper_case <- c("A", "B", "C", "D", "E", "F", "G", "H" "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
 
-punctuation <- c(".", ",", "!", "?", "'", """, "(", ")", " ", "-", ";", ":")
+punctuation <- c(".", ",", "!", "?", "'", ""","(", ")", " ", "-", ";", ":")
 ```
 
     ## Error: <text>:3:56: unexpected string constant
@@ -43,7 +43,8 @@ punctuation <- c(".", ",", "!", "?", "'", """, "(", ")", " ", "-", ";", ":")
 Comment on what you noticed about the errors and how you used this
 information to correct the issues.
 
-**Response**:
+**What I noticed is the error will do brackets to the last valid entry
+in the list which does help figure out where the error is**:
 
 Make one long vector containing all the symbols.
 
@@ -56,7 +57,8 @@ my_symbols <- cbind(lower_case, upper_case, punctuation)
 Comment on what you noticed about the errors and how you used this
 information to correct the issues.
 
-**Response**:
+**I did not get an error but I got the following warning message: number
+of rows of result is not a multiple of vector length (arg 3)**:
 
 Turn the `my_symbols` vector into a data frame, with the variable name
 “Symbol”.
